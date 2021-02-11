@@ -117,8 +117,7 @@ contract Voting is Ownable {
     function vote(uint _proposalId) public {
         require(workflowStatus == WorkflowStatus.VotingSessionStarted, "Voting session is not started.");
         require(isWhitelisted(msg.sender), "You are not registered.");
-        require(_proposalId <= proposalId, "")
-        // TODO: check _proposalId index in proposals ?
+        require(_proposalId <= proposalId, "Unknown proposalId");
 
         Voter storage voter = voters[msg.sender];
         require(!voter.hasVoted, "You have already voted.");
